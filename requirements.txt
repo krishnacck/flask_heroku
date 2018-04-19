@@ -2,16 +2,19 @@
 # Flask
 # ----------------------
 flask
-
+requests==2.9.1
 
 # ----------------------
 # Testing
 # ----------------------
 mock
-
+Flask==0.12.2
+requests==2.9.1
 
 # ----------------------
 # Production Server
 # ----------------------
 gevent
 gunicorn
+Flask==0.12.2
+requests==2.9.1
