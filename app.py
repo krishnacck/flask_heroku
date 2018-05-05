@@ -23,13 +23,31 @@ def index():
         # print(count)
         result = {}
         post = i
-        result['post_id'] = post['id']
-        post_id = post['id']
+        try:
+        	result['post_id'] = post['id']
+        except:
+        	result = ""
+        try:
+        	post_id = post['id']
+        except:
+        	post_id = ""
         # print (post_id)
-        result['published_date'] = post['date']
-        result['status'] = post['status']
-        result['title'] = post['title']['rendered']
-        result['content'] = post['content']['rendered']
+        try:
+        	result['published_date'] = post['date']
+        except:
+        	result['published_date'] = ""
+        try:
+        	result['status'] = post['status']
+        except:
+        	result['status'] = ""
+        try:        	
+        	result['title'] = post['title']['rendered']
+        except:
+        	result['title'] = ""
+        try:
+        	result['content'] = post['content']['rendered']
+        except:
+        	result['content'] = ""
         # print (content)
         # sys.exit()
         url = "http://blog.isochal.com/wp-json/wp/v2/categories?post="+str(post_id)
@@ -40,7 +58,10 @@ def index():
         url = "http://blog.isochal.com/wp-json/wp/v2/media?parent="+str(post_id)
         r3 = requests.get(url)
         media = r3.json()
-        result['image'] = media[0]['guid']['rendered']
+        try:
+        	result['image'] = media[0]['guid']['rendered']
+        except:
+        	result['image'] = ""
         # result = result.append()
         # res = res.append(json.dumps(result))
         # print(result)
@@ -118,5 +139,6 @@ def getMember(name):
     return name
  
 if __name__ == "__main__":
-    app.run()
+#    app.run()
+    app.run(host='0.0.0.0', port=5050)
     # test(1711)
