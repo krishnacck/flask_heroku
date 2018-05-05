@@ -7,7 +7,7 @@ app = Flask(__name__)
  
 @app.route("/")
 def index():
-    url = "http://blog.isochal.com/wp-json/wp/v2/posts/"
+    url = "https://blog.isochal.com/wp-json/wp/v2/posts/"
     res = ""
     r = requests.get(url)
     po = r.json()
